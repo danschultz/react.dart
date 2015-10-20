@@ -1,4 +1,4 @@
-part of react_js.react;
+part of react;
 
 Function _wrapEventHandler(EventHandler handler) {
   return allowInterop((event, id, realEvent) => handler(event));

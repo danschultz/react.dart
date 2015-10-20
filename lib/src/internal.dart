@@ -1,4 +1,4 @@
-library react_js.internal;
+library react.internal;
 
 import 'package:js/js.dart';
 

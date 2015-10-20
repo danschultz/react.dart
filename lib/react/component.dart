@@ -1,4 +1,4 @@
-part of react_js.react;
+part of react;
 
 abstract class Component {
   Map _props;

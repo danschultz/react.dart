@@ -4,8 +4,8 @@
 library react_js.example;
 
 import 'dart:html';
-import 'package:react_js/react.dart' as react;
-import 'package:react_js/react_dom.dart' as react_dom;
+import 'package:react/react.dart' as react;
+import 'package:react/react_dom.dart' as react_dom;
 
 main() {
   var output = querySelector("#output");
@@ -14,6 +14,7 @@ main() {
 }
 
 var app = react.registerComponent(() => new App());
+
 class App extends react.Component {
   num get _count1 => state["count1"];
   num get _count2 => state["count2"];
@@ -29,12 +30,16 @@ class App extends react.Component {
           setState({"count1": value});
         }
       }),
-      counter({"count": _count2, "change": (value) => setState({"count2": value})})
+      counter({
+        "count": _count2,
+        "change": (value) => setState({"count2": value})
+      })
     ]);
   }
 }
 
 var counter = react.registerComponent(() => new Counter());
+
 class Counter extends react.Component {
   num get _count => props["count"];
   Function get _change => props["change"];

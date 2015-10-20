@@ -1,4 +1,4 @@
-part of react_js.react;
+part of react;
 
 @Js()
 class ReactClass {}
