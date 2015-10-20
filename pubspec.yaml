@@ -1,0 +1,11 @@
+name: react_js
+description: A starting point for Dart libraries or applications.
+version: 0.0.1
+#author: Your Name <email@example.com>
+#homepage: https://www.example.com
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dependencies:
+  js: ^0.6.0-beta
+dev_dependencies:
+  browser: any

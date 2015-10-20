@@ -1,0 +1,23 @@
+{
+  "name": "react-js",
+  "version": "0.0.1",
+  "description": "React Dart wrapper",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "browserify -t babelify src/react.js -o lib/react.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Schultz",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  },
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0"
+  }
+}
