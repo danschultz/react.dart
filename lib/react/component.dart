@@ -59,13 +59,13 @@ abstract class Component {
 }
 
 ComponentFactory registerComponent(Component factory()) {
-  var components = <internal.Component, Component>{};
+  var components = <JsObject, Component>{};
   var componentProps = <int, Map>{};
 
   var spec = new ClassSpecification(
-    getInitialState: allowInteropCaptureThis((jsComponent) {
+    getInitialState: allowInteropCaptureThis((internal.Component jsComponent) {
       var component = factory();
-      var props = componentProps[jsComponent.props["__propKey"]];
+      var props = componentProps[jsComponent.props.propKey__];
       components[jsComponent] = component;
       component._initialize(jsComponent, props);
       return {};
@@ -110,6 +110,8 @@ ComponentFactory registerComponent(Component factory()) {
       component._isMounted = false;
     }),
     render: allowInteropCaptureThis((jsComponent) {
+      // The returned element is somehow being converted to a DartObject and React is complaining
+      // that it's not a ReactElement.
       return components[jsComponent].render();
     })
   );
@@ -121,8 +123,8 @@ ComponentFactory registerComponent(Component factory()) {
     var propKey = props.hashCode;
     componentProps[propKey] = props;
 
-    var jsProps = new JsObject.jsify({"__propKey": propKey});
-    return reactFactory.apply([jsProps, children]);
+    var jsProps = new internal.Props(propKey__: propKey);
+    return reactFactory(jsProps, children);
   };
 }
 
