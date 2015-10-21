@@ -42,6 +42,8 @@ abstract class Component {
 
   Map getDefaultProps() => {};
 
+  html.Element getDomNode() => _internalComponent.getDOMNode();
+
   ReactElement render();
 
   void setState(Map nextState) {

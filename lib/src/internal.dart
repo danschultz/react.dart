@@ -1,6 +1,7 @@
 @Js("React")
 library react.internal;
 
+import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'package:react/react.dart';
 
@@ -17,6 +18,7 @@ external Function createFactory(ReactClass clazz);
 class Component {
   external Props get props;
 
+  external html.Element getDOMNode();
   external bool isMounted();
   external void setState(nextState);
 }
