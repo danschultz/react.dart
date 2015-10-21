@@ -16,9 +16,6 @@ Props _props({String className, bool disabled, void onClick(EventHandler<Synthet
   return new Props(className: className, disabled: disabled, onClick: _wrapEventHandler(onClick));
 }
 
-ReactElement button([Map props, children]) => createElement("button", props, children);
-ReactElement div([Map props, children]) => createElement("div", props, children);
-
 ReactElement createElement(type, [Map props, children]) {
   var interopProps = new Props();
   if (props != null) {
