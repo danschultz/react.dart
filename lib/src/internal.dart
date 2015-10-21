@@ -6,6 +6,7 @@ import 'package:js/js.dart';
 class Component {
   external Props get props;
 
+  external bool isMounted();
   external void setState(nextState);
 }
 

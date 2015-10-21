@@ -7,8 +7,7 @@ abstract class Component {
   Map _state;
   Map get state => _state;
 
-  bool _isMounted = false;
-  bool get isMounted => _isMounted;
+  bool get isMounted => _internalComponent.isMounted() ?? false;
 
   Map _nextState;
   Map _prevState;
@@ -73,9 +72,6 @@ ComponentFactory registerComponent(Component factory()) {
     componentWillMount: allowInteropCaptureThis((jsComponent) => components[jsComponent].componentWillMount()),
     componentDidMount: allowInteropCaptureThis((jsComponent) {
       var component = components[jsComponent];
-      // TODO(Dan): Does React consider a component mounted in `componentWillMount` or `componentDidMount`?
-      // Perhaps it's better to delegate this property to the JS Component.
-      component._isMounted = true;
       component.componentDidMount();
     }),
     shouldComponentUpdate: allowInteropCaptureThis((jsComponent, jsNextArgs, jsNextState, jsNextContext) {
@@ -107,7 +103,6 @@ ComponentFactory registerComponent(Component factory()) {
     componentWillUnmount: allowInteropCaptureThis((jsComponent, jsPrevContext) {
       var component = components[jsComponent];
       component.componentWillUnmount();
-      component._isMounted = false;
     }),
     render: allowInteropCaptureThis((jsComponent) {
       // The returned element is somehow being converted to a DartObject and React is complaining
