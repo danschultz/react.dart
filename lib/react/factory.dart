@@ -57,7 +57,8 @@ ComponentFactory registerComponent(Component factory()) {
         component.componentDidUpdate(prevProps, component._prevState);
       }),
       componentWillUnmount: allowInteropCaptureThis((jsComponent, jsPrevContext) {
-        var component = components[jsComponent];
+        // Clean up the unmounted component.
+        var component = components.remove(jsComponent);
         component.componentWillUnmount();
       }),
       render: allowInteropCaptureThis((jsComponent) {
