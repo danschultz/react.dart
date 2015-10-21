@@ -62,7 +62,7 @@ ComponentFactory registerComponent(Component factory()) {
       }),
       render: allowInteropCaptureThis((jsComponent) {
         // The returned element gets converted to a DartObject when running in JS, and
-        // causes React gives up on rendering the component.
+        // causes React to give up on rendering the component.
         // See: https://github.com/danschultz/react.dart/issues/1
         return components[jsComponent].render();
       }));
