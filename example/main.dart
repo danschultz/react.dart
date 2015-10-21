@@ -9,40 +9,33 @@ import 'package:react/react_dom.dart' as react_dom;
 
 main() {
   var output = querySelector("#output");
-
-  var element = app();
-  react_dom.render(element, output);
+  react_dom.render(app(), output);
 }
 
-var app = react.registerComponent(() => new App());
+var app = react.registerComponent(() => new _App());
+var counter = react.registerComponent(() => new _Counter());
 
-class App extends react.Component {
+class _App extends react.Component {
   num get _count1 => state["count1"];
   num get _count2 => state["count2"];
 
   Map getInitialState() => {"count1": 0, "count2": 0};
 
   react.ReactElement render() {
-    return react.div(null, "Hi");
-    // return react.div(null, [
-    //   counter({
-    //     "count": _count1,
-    //     "change": (value) {
-    //       print("counter1: $value");
-    //       setState({"count1": value});
-    //     }
-    //   }),
-    //   counter({
-    //     "count": _count2,
-    //     "change": (value) => setState({"count2": value})
-    //   })
-    // ]);
+    return react.div(null, [
+      counter({
+        "count": _count1,
+        "change": (value) => setState({"count1": value})
+      }),
+      counter({
+        "count": _count2,
+        "change": (value) => setState({"count2": value})
+      })
+    ]);
   }
 }
 
-var counter = react.registerComponent(() => new Counter());
-
-class Counter extends react.Component {
+class _Counter extends react.Component {
   num get _count => props["count"];
   Function get _change => props["change"];
 

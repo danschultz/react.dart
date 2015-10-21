@@ -24,7 +24,6 @@ ReactElement createElement(type, [Map props, children]) {
   if (props != null) {
     interopProps = _props(className: props["className"], onClick: props["onClick"]);
   }
-
   return _internalCreateElement(type, interopProps, children);
 }
 
