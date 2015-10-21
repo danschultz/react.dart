@@ -70,13 +70,10 @@ ComponentFactory registerComponent(Component factory()) {
       return {};
     }),
     componentWillMount: allowInteropCaptureThis((jsComponent) => components[jsComponent].componentWillMount()),
-    componentDidMount: allowInteropCaptureThis((jsComponent) {
-      var component = components[jsComponent];
-      component.componentDidMount();
-    }),
+    componentDidMount: allowInteropCaptureThis((jsComponent) => components[jsComponent].componentDidMount()),
     shouldComponentUpdate: allowInteropCaptureThis((jsComponent, jsNextArgs, jsNextState, jsNextContext) {
       var component = components[jsComponent];
-      var nextProps = componentProps[jsNextArgs["__propKey"]];
+      var nextProps = componentProps[jsNextArgs["propKey__"]];
 
       if (component.shouldComponentUpdate(nextProps, component._nextState)) {
         return true;
@@ -88,7 +85,7 @@ ComponentFactory registerComponent(Component factory()) {
     }),
     componentWillUpdate: allowInteropCaptureThis((jsComponent, jsNextArgs, jsNextState, jsPrevContext) {
       var component = components[jsComponent];
-      var nextProps = componentProps[jsNextArgs["__propKey"]];
+      var nextProps = componentProps[jsNextArgs["propKey__"]];
 
       component.componentWillUpdate(nextProps, component._nextState);
       component._props = nextProps;
@@ -96,7 +93,7 @@ ComponentFactory registerComponent(Component factory()) {
     }),
     componentDidUpdate: allowInteropCaptureThis((jsComponent, jsPrevProps, jsPrevState, jsPrevContext) {
       // Clean up the prop keys
-      var prevProps = componentProps.remove(jsPrevProps["__propKey"]);
+      var prevProps = componentProps.remove(jsPrevProps["propKey__"]);
       var component = components[jsComponent];
       component.componentDidUpdate(prevProps, component._prevState);
     }),
@@ -105,8 +102,9 @@ ComponentFactory registerComponent(Component factory()) {
       component.componentWillUnmount();
     }),
     render: allowInteropCaptureThis((jsComponent) {
-      // The returned element is somehow being converted to a DartObject and React is complaining
-      // that it's not a ReactElement.
+      // The returned element gets converted to a DartObject when running in JS, and
+      // causes React gives up on rendering the component.
+      // See: https://github.com/danschultz/react.dart/issues/1
       return components[jsComponent].render();
     })
   );
@@ -115,9 +113,11 @@ ComponentFactory registerComponent(Component factory()) {
   var reactFactory = internal.createFactory(clazz);
 
   return ([Map props, children]) {
-    // Use the props hash code as a key to retrieve them later.
-    var propKey = props.hashCode;
-    componentProps[propKey] = props;
+    // Copy the props into a new map, so that we can get a unique hash code to be used for
+    // mapping the props between Dart and JS interop.
+    var copiedProps = new Map.from(props ?? {});
+    var propKey = copiedProps.hashCode;
+    componentProps[propKey] = copiedProps;
 
     var jsProps = new internal.Props(propKey__: propKey);
     return reactFactory(jsProps, children);
