@@ -2,7 +2,6 @@
 library react;
 
 import 'dart:html' as html;
-import 'dart:js';
 import 'package:js/js.dart';
 import 'package:react/src/internal.dart' as internal;
 

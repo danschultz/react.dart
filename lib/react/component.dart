@@ -59,7 +59,7 @@ abstract class Component {
 }
 
 ComponentFactory registerComponent(Component factory()) {
-  var components = <JsObject, Component>{};
+  var components = <internal.Component, Component>{};
   var componentProps = <int, Map>{};
 
   var spec = new ClassSpecification(

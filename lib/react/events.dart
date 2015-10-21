@@ -4,7 +4,7 @@ Function _wrapEventHandler(EventHandler handler) {
   return allowInterop((event, id, realEvent) => handler(event));
 }
 
-typedef void EventHandler<E extends SyntheticEvent>(event);
+typedef void EventHandler<E extends SyntheticEvent>(E event);
 
 @Js()
 class SyntheticEvent {

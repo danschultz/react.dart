@@ -31,4 +31,4 @@ class ClassSpecification {
 external ReactClass _createClass(ClassSpecification specification);
 
 @Js("createFactory")
-external JsFunction _createFactory(ReactClass clazz);
+external Function _createFactory(ReactClass clazz);
