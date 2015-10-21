@@ -40,6 +40,8 @@ abstract class Component {
 
   Map getInitialState() => {};
 
+  Map getDefaultProps() => {};
+
   ReactElement render();
 
   void setState(Map nextState) {
@@ -53,6 +55,6 @@ abstract class Component {
   void _initialize(internal.Component internalComponent, Map props) {
     _internalComponent = internalComponent;
     _state = getInitialState();
-    _props = props;
+    _props = new Map.from(getDefaultProps())..addAll(props);
   }
 }
