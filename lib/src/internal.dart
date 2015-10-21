@@ -5,16 +5,16 @@ import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'package:react/react.dart';
 
-@Js("createElement")
+@Js()
 external ReactElement createElement(type, [props, children]);
 
-@Js("createClass")
+@Js()
 external ReactClass createClass(ClassSpecification specification);
 
-@Js("createFactory")
+@Js()
 external Function createFactory(ReactClass clazz);
 
-@Js("Component")
+@Js()
 class Component {
   external Props get props;
 
