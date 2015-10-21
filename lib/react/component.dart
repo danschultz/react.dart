@@ -61,7 +61,7 @@ ComponentFactory registerComponent(Component factory()) {
   var components = <internal.Component, Component>{};
   var componentProps = <int, Map>{};
 
-  var spec = new ClassSpecification(
+  var spec = new internal.ClassSpecification(
     getInitialState: allowInteropCaptureThis((internal.Component jsComponent) {
       var component = factory();
       var props = componentProps[jsComponent.props.propKey__];
@@ -110,8 +110,9 @@ ComponentFactory registerComponent(Component factory()) {
       return components[jsComponent].render();
     })
   );
-  var clazz = _createClass(spec);
-  var reactFactory = _createFactory(clazz);
+
+  var clazz = internal.createClass(spec);
+  var reactFactory = internal.createFactory(clazz);
 
   return ([Map props, children]) {
     // Use the props hash code as a key to retrieve them later.

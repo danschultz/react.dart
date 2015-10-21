@@ -16,13 +16,10 @@ Props _props({String className, bool disabled, void onClick(EventHandler<Synthet
   return new Props(className: className, disabled: disabled, onClick: _wrapEventHandler(onClick));
 }
 
-ReactElement createElement(type, [Map props, children]) {
+ReactElement createElement(typeOrClass, [Map props, children]) {
   var interopProps = new Props();
   if (props != null) {
     interopProps = _props(className: props["className"], onClick: props["onClick"]);
   }
-  return _internalCreateElement(type, interopProps, children);
+  return internal.createElement(typeOrClass, interopProps, children);
 }
-
-@Js("createElement")
-external ReactElement _internalCreateElement(type, [props, children]);

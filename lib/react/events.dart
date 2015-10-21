@@ -1,9 +1,5 @@
 part of react;
 
-Function _wrapEventHandler(EventHandler handler) {
-  return allowInterop((event, id, realEvent) => handler(event));
-}
-
 typedef void EventHandler<E extends SyntheticEvent>(E event);
 
 @Js()
@@ -42,4 +38,8 @@ class SyntheticMouseEvent extends SyntheticEvent {
   external bool get shiftKey;
 
   external bool getModifierState(key);
+}
+
+Function _wrapEventHandler(EventHandler handler) {
+  return allowInterop((event, id, realEvent) => handler(event));
 }
