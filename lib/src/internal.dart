@@ -1,5 +1,5 @@
 @JS("React")
-library react.internal;
+library react.src.internal;
 
 import 'dart:html' as html;
 import 'package:js/js.dart';
