@@ -4,9 +4,33 @@ Experimental React JS bindings for Dart. These bindings use the new `@JS` metada
 
 ## Usage
 
-Usage is similar to the [react-dart] package.
+Add a Git dependency to your `pubspec.yaml`.
 
-* Include `packages/react/react.js` in your HTML.
+```yaml
+name: my_app
+dependencies:
+  browser: any
+  react:
+    git: https://github.com/danschultz/react.dart.git
+```
+
+Include `packages/react/react.js` in your HTML.
+
+```html
+<html>
+  <head>
+    <script async src="packages/react/react.js"></script>
+    <script async type="application/dart" src="main.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+  </head>
+  <body>
+    <div id="app">Your React app's content</div>
+  </body>
+</html>
+```
+
+Mount a React component in your Dart app. Usage is similar to the [react-dart] package.
+
 * Sub-class `Component` to create a React component.
 * Register the component and create a class factory within React JS.
 * Use the returned factory to create new instances of your component.
@@ -37,6 +61,11 @@ void main() {
 ## Examples
 
 Check out the [example] folder to see working examples.
+
+To run the examples:
+
+* Run `pub serve example` from the project's directory.
+* Open `http://localhost:8080` from your web browser.
 
 ## Vision
 
