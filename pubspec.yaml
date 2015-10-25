@@ -4,7 +4,7 @@ version: 0.0.1
 author: Dan Schultz <schultz.t.dan@gmail.com>
 homepage: https://www.example.com
 environment:
-  sdk: '>=1.0.0 <2.0.0'
+  sdk: '>=1.13.0-dev.7.3 <2.0.0'
 dependencies:
   js: ^0.6.0-beta.5
 dev_dependencies:
