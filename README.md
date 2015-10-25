@@ -4,7 +4,21 @@ Experimental React JS bindings for Dart. These bindings use the new `@JS` metada
 
 ## Usage
 
-Add a Git dependency to your `pubspec.yaml`.
+This package requires at least Dart 1.13.0-dev.7.3. If you use Brew, you can easily install developer releases by running:
+
+```
+brew install dart --devel --with-dartium --with-content-shell
+brew linkapps dart
+```
+
+Later, you can use `brew switch` to revert back to using a stable version of Dart:
+
+```
+brew switch dart 1.12.1
+brew linkapps dart
+```
+
+Once you have a developer release of Dart installed, add a Git dependency to your `pubspec.yaml`.
 
 ```yaml
 name: my_app
