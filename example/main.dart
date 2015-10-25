@@ -5,11 +5,10 @@ library react_js.example;
 
 import 'dart:html';
 import 'package:react/react.dart' as react;
-import 'package:react/react_dom.dart' as react_dom;
 
 main() {
   var output = querySelector("#output");
-  react_dom.render(app(), output);
+  react.render(app(), output);
 }
 
 var app = react.registerComponent(() => new _App());

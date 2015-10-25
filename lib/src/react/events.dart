@@ -1,4 +1,4 @@
-part of react;
+part of react.src.react;
 
 typedef void EventHandler<E extends SyntheticEvent>(E event);
 

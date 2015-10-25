@@ -1,4 +1,4 @@
-part of react;
+part of react.src.react;
 
 abstract class Component {
   Map _props;
@@ -12,29 +12,17 @@ abstract class Component {
   Map _nextState;
   Map _prevState;
 
-  void componentWillMount() {
+  void componentWillMount() {}
 
-  }
+  void componentDidMount() {}
 
-  void componentDidMount() {
+  void componentWillReceiveProps(Map nextProps) {}
 
-  }
+  void componentWillUpdate(Map nextProps, Map nextState) {}
 
-  void componentWillReceiveProps(Map nextProps) {
+  void componentDidUpdate(Map prevProps, Map prevState) {}
 
-  }
-
-  void componentWillUpdate(Map nextProps, Map nextState) {
-
-  }
-
-  void componentDidUpdate(Map prevProps, Map prevState) {
-
-  }
-
-  void componentWillUnmount() {
-
-  }
+  void componentWillUnmount() {}
 
   bool shouldComponentUpdate(Map nextProps, Map nextState) => true;
 
