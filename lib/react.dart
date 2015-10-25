@@ -1,4 +1,4 @@
-@Js("React")
+@JS("React")
 library react;
 
 import 'dart:html' as html;

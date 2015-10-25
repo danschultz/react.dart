@@ -1,9 +1,9 @@
 part of react;
 
-@Js()
+@JS()
 class ReactElement {}
 
-@Js()
+@JS()
 class Props {
   external bool get disabled;
   external String get className;

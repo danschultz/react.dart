@@ -2,7 +2,7 @@ part of react;
 
 typedef void EventHandler<E extends SyntheticEvent>(E event);
 
-@Js()
+@JS()
 class SyntheticEvent {
   external bool get bubbles;
   external bool get cancelable;
@@ -21,7 +21,7 @@ class SyntheticEvent {
   external bool isPropagationStopped();
 }
 
-@Js()
+@JS()
 class SyntheticMouseEvent extends SyntheticEvent {
   external bool get altKey;
   external num get button;

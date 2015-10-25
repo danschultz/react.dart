@@ -30,9 +30,10 @@ ComponentFactory registerComponent(Component factory()) {
       }),
       componentWillMount: allowInteropCaptureThis((jsComponent) => components[jsComponent].componentWillMount()),
       componentDidMount: allowInteropCaptureThis((jsComponent) => components[jsComponent].componentDidMount()),
-      shouldComponentUpdate: allowInteropCaptureThis((jsComponent, jsNextArgs, jsNextState, jsNextContext) {
+      shouldComponentUpdate: allowInteropCaptureThis(
+          (internal.Component jsComponent, internal.Props jsNextArgs, jsNextState, jsNextContext) {
         var component = components[jsComponent];
-        var nextProps = componentProps[jsNextArgs["propKey__"]];
+        var nextProps = componentProps[jsNextArgs.propKey__];
 
         if (component.shouldComponentUpdate(nextProps, component._nextState)) {
           return true;
@@ -42,26 +43,28 @@ ComponentFactory registerComponent(Component factory()) {
           return false;
         }
       }),
-      componentWillUpdate: allowInteropCaptureThis((jsComponent, jsNextProps, jsNextState, jsPrevContext) {
+      componentWillUpdate: allowInteropCaptureThis(
+          (internal.Component jsComponent, internal.Props jsNextProps, jsNextState, jsPrevContext) {
         var component = components[jsComponent];
-        var nextProps = componentProps[jsNextProps["propKey__"]];
+        var nextProps = componentProps[jsNextProps.propKey__];
 
         component.componentWillUpdate(nextProps, component._nextState);
         component._props = nextProps;
         component._state = component._nextState;
       }),
-      componentDidUpdate: allowInteropCaptureThis((jsComponent, jsPrevProps, jsPrevState, jsPrevContext) {
+      componentDidUpdate: allowInteropCaptureThis(
+          (internal.Component jsComponent, internal.Props jsPrevProps, jsPrevState, jsPrevContext) {
         // Clean up the prop keys
-        var prevProps = componentProps.remove(jsPrevProps["propKey__"]);
+        var prevProps = componentProps.remove(jsPrevProps.propKey__);
         var component = components[jsComponent];
         component.componentDidUpdate(prevProps, component._prevState);
       }),
-      componentWillUnmount: allowInteropCaptureThis((jsComponent, jsPrevContext) {
+      componentWillUnmount: allowInteropCaptureThis((internal.Component jsComponent, jsPrevContext) {
         // Clean up the unmounted component.
         var component = components.remove(jsComponent);
         component.componentWillUnmount();
       }),
-      render: allowInteropCaptureThis((jsComponent) {
+      render: allowInteropCaptureThis((internal.Component jsComponent) {
         // The returned element gets converted to a DartObject when running in JS, and
         // causes React to give up on rendering the component.
         // See: https://github.com/danschultz/react.dart/issues/1

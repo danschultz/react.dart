@@ -1,20 +1,20 @@
-@Js("React")
+@JS("React")
 library react.internal;
 
 import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'package:react/react.dart';
 
-@Js()
+@JS()
 external ReactElement createElement(type, [props, children]);
 
-@Js()
+@JS()
 external ReactClass createClass(ClassSpecification specification);
 
-@Js()
+@JS()
 external Function createFactory(ReactClass clazz);
 
-@Js()
+@JS()
 class Component {
   external Props get props;
 
@@ -23,17 +23,17 @@ class Component {
   external void setState(nextState);
 }
 
-@Js()
+@JS()
 class Props {
   external int get propKey__;
 
   external factory Props({int propKey__});
 }
 
-@Js()
+@JS()
 class ReactClass {}
 
-@Js()
+@JS()
 class ClassSpecification {
   external Function get componentWillMount;
   external Function get componentDidMount;
