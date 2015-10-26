@@ -65,9 +65,6 @@ ComponentFactory registerComponent(Component factory()) {
         component.componentWillUnmount();
       }),
       render: allowInteropCaptureThis((internal.Component jsComponent) {
-        // The returned element gets converted to a DartObject when running in JS, and
-        // causes React to give up on rendering the component.
-        // See: https://github.com/danschultz/react.dart/issues/1
         return components[jsComponent].render();
       }));
 
