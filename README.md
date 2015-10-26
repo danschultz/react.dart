@@ -25,7 +25,7 @@ name: my_app
 dependencies:
   browser: any
   react:
-    git: https://github.com/danschultz/react.dart.git
+    git: git://github.com/danschultz/react.dart.git
 ```
 
 Include `packages/react/react.js` in your HTML.
