@@ -3,6 +3,7 @@ part of react.src.react;
 @JS()
 class ReactElement {}
 
+@anonymous
 @JS()
 class Props {
   external bool get disabled;

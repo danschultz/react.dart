@@ -23,6 +23,7 @@ class Component {
   external void setState(nextState);
 }
 
+@anonymous
 @JS()
 class Props {
   external int get propKey__;
@@ -33,6 +34,7 @@ class Props {
 @JS()
 class ReactClass {}
 
+@anonymous
 @JS()
 class ClassSpecification {
   external Function get componentWillMount;
